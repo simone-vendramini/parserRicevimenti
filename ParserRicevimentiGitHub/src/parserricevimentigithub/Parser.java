@@ -68,14 +68,16 @@ public class Parser {
             for (int i = 0; i < nodelist.getLength(); i++) {
                 td = (Element) nodelist.item(i);
                 if(td!=null){
-                    if(codice==0){
-                        codice=Integer.parseInt(getTextValue(td));
-                    }else if(nome==""){
-                        nome=getTextValue(td);
-                    }else if(giorno==""){
-                        giorno=getTextValue(td);
-                    }else if(ora==""){
-                        ora=getTextValue(td);
+                    if(codice!=157){
+                        if(codice==0){
+                            codice=Integer.parseInt(getTextValue(td));
+                        }else if(nome==""||nome==null){
+                            nome=getTextValue(td);
+                        }else if(giorno==""||giorno==null){
+                            giorno=getTextValue(td);
+                        }else if(ora==""||ora==null){
+                            ora=getTextValue(td);
+                        }
                     }
                 }
             }

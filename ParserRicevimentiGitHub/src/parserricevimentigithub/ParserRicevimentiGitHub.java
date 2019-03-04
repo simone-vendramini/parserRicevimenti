@@ -34,12 +34,24 @@ public class ParserRicevimentiGitHub {
             String percorso="Ricevimenti.xml";
             Ricevimenti = dom.parseDocument(percorso);
             inFromUser = new BufferedReader(new InputStreamReader(System.in, "UTF-8"));
-            System.out.println("Inserire giorno");
+            System.out.println("1] cerca tramite giorno, 2] cerca tramite docente");
             String risposta=inFromUser.readLine();
-            risposta=Normalizer.normalize(risposta, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "ì");
-            for (Ricevimento ric:Ricevimenti) {
-                if(ric.getGiorno().equals(risposta)){
-                    System.out.println(ric.toString());
+            if(risposta.equals("1")){
+                System.out.println("Inserire giorno");
+                risposta=inFromUser.readLine();
+                risposta=Normalizer.normalize(risposta, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "ì");
+                for (Ricevimento ric:Ricevimenti) {
+                    if(ric.getGiorno().equals(risposta)){
+                        System.out.println(ric.toString());
+                    }
+                }
+            }else{
+                System.out.println("Inserire docente");
+                risposta=inFromUser.readLine();
+                for (Ricevimento ric:Ricevimenti) {
+                    if(risposta.equals(ric.getNome())){
+                        System.out.println(ric.toString());
+                    }
                 }
             }
         } catch (UnsupportedEncodingException ex) {

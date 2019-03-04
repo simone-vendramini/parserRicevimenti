@@ -62,4 +62,8 @@ public class Ricevimento {
     public String toString(){
         return codice+" - "+nome+" - "+giorno+" - "+ora;
     }
+    
+    public String toCsv(){
+        return codice+";"+nome+";"+giorno+";"+ora;
+    }
 }

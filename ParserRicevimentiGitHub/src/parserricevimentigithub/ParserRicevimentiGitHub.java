@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
+import java.text.Normalizer;
 
 /**
  *
@@ -35,6 +36,7 @@ public class ParserRicevimentiGitHub {
             inFromUser = new BufferedReader(new InputStreamReader(System.in, "UTF-8"));
             System.out.println("Inserire giorno");
             String risposta=inFromUser.readLine();
+            risposta=Normalizer.normalize(risposta, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "ì");
             for (Ricevimento ric:Ricevimenti) {
                 if(ric.getGiorno().equals(risposta)){
                     System.out.println(ric.toString());
